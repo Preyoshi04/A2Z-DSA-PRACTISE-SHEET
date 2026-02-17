@@ -41,7 +41,7 @@ public class M_Bouquets {
             int mid = low + (high - low) / 2;
 
             if (possible(bloomDay, mid, k, m)) {
-                high = mid - 1; // ✅ FIX
+                high = mid - 1; 
             } else {
                 low = mid + 1;
             }
@@ -50,8 +50,8 @@ public class M_Bouquets {
     }
 
     public static boolean possible(int[] arr, int day, int flower, int bouquet) {
-        int countFlower = 0;
-        int bouquetPossible = 0;
+        int countFlower = 0;  // count of flowers bloomed!
+        int bouquetPossible = 0;  // possible bouquets made with bloomed flowers!
 
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] <= day) {
@@ -80,3 +80,61 @@ public class M_Bouquets {
         return max;
     }
 }
+
+//---BRUTE FORCE---//
+
+// class Solution {
+//     public int minDays(int[] bloomDay, int m, int k) {
+//         if (m * k > bloomDay.length) {
+//             return -1;
+//         }
+//         int minimum = min(bloomDay);
+//         int maximum = max(bloomDay);
+
+//         for (int i = minimum; i <= maximum; i++) {
+//             if (possible(bloomDay, i, k, m)) {
+//                 return i;
+//             }
+//         }
+//         return -1;
+
+//     }
+
+//     public static boolean possible(int[] arr, int day, int flower, int bouquet) {
+
+//         int countFlower = 0;
+//         int bouquetPossible = 0;
+
+//         for (int i = 0; i < arr.length; i++) {
+//             if (arr[i] <= day) {
+//                 countFlower++;
+//             } else {
+//                 bouquetPossible += (countFlower / flower);
+//                 countFlower = 0;
+//             }
+//         }
+//         bouquetPossible += (countFlower / flower);
+
+//         return (bouquetPossible >= bouquet) ? true : false;
+//     }
+
+//     public static int min(int[] arr) {
+//         int min = Integer.MAX_VALUE;
+//         for (int n : arr) {
+//             if (n < min) {
+//                 min = n;
+//             }
+//         }
+//         return min;
+//     }
+
+//     public static int max(int[] arr) {
+//         int max = Integer.MIN_VALUE;
+//         for (int n : arr) {
+//             if (n > max) {
+//                 max = n;
+//             }
+//         }
+//         return max;
+//     }
+// }
